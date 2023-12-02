@@ -19,7 +19,6 @@ const ShopContextProvider = (props) => {
   // Add To Cart
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    console.log(cartItems);
   };
 
   // Remove From Cart
