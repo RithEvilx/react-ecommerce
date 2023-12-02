@@ -2,9 +2,12 @@ import React from "react";
 import "./ProductDisplay.css";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
+import { useContext } from "react";
+import { ShopContext } from "../../Context/ShopContext";
 
 const ProductDisplay = (props) => {
   const { product } = props;
+  const { addToCart } = useContext(ShopContext);
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
@@ -29,11 +32,17 @@ const ProductDisplay = (props) => {
           <p>(122)</p>
         </div>
         <div className="productdisplay-right-prices">
-          <div className="productdisplay-right-price-old">${product.old_price}</div>
-          <div className="productdisplay-right-price-new">${product.new_price}</div>
+          <div className="productdisplay-right-price-old">
+            ${product.old_price}
+          </div>
+          <div className="productdisplay-right-price-new">
+            ${product.new_price}
+          </div>
         </div>
         <div className="productdisplay-right-discription">
-
+          A lightweight, usually knitted, pullover shirt, close-fitting and with
+          a round neckline and short sleeves, woen as an undershirt or outer
+          garment.
         </div>
         <div className="productdisplay-right-size">
           <h1>Select Size:</h1>
@@ -45,9 +54,13 @@ const ProductDisplay = (props) => {
             <div>XXL</div>
           </div>
         </div>
-        <button>Add to Cart</button>
-        <p className="productdisplay-right-category"><span>Category: </span>Women , T-Shirt, Crop Top</p>
-        <p className="productdisplay-right-category"><span>Tags: </span>Modern, Latest</p>
+        <button onClick={()=>{addToCart(product.id)}}>Add to Cart</button>
+        <p className="productdisplay-right-category">
+          <span>Category: </span>Women , T-Shirt, Crop Top
+        </p>
+        <p className="productdisplay-right-category">
+          <span>Tags: </span>Modern, Latest
+        </p>
       </div>
     </div>
   );
